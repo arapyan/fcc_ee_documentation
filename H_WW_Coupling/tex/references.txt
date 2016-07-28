@@ -1,7 +1,0 @@
-TLEP: http://arxiv.org/pdf/1308.6176v3.pdf
-LEP3: http://arxiv.org/pdf/1208.1662v2.pdf
-ILC Higgs: https://www.lhc-ilc.physik.uni-bonn.de/ergebnisse/dateien/t00000030.pdf?c=t&id=30
-ILC Higgs Supporting: http://flc.desy.de/lcnotes/notes/localfsExplorer_read?currentPath=/afs/desy.de/group/flc/lcnotes/LC-REP-2013-022.pdf
-
-
-
