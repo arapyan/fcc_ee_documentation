@@ -2,8 +2,10 @@
 \contentsline {section}{\numberline {}Contents}{1}{section*.1}
 \tocdepth@restore 
 \contentsline {section}{\numberline {I}Introduction}{2}{section*.2}
-\contentsline {section}{\numberline {II}Event generation and simulation}{2}{section*.3}
-\contentsline {section}{\numberline {III}Candidate selection}{2}{section*.4}
-\contentsline {section}{\numberline {IV}Statistical method}{2}{section*.5}
-\contentsline {section}{\numberline {V}Results}{3}{section*.6}
-\contentsline {section}{\numberline {VI}Conclusion}{3}{section*.7}
+\contentsline {section}{\numberline {II}Objects}{2}{section*.3}
+\contentsline {section}{\numberline {III}MC Event generation and detector simulation}{2}{section*.4}
+\contentsline {section}{\numberline {IV}Candidate selection}{2}{section*.5}
+\contentsline {section}{\numberline {V}Statistical method}{3}{section*.6}
+\contentsline {section}{\numberline {VI}Results}{3}{section*.7}
+\contentsline {section}{\numberline {VII}Conclusion}{3}{section*.8}
+\contentsline {section}{\numberline {}References}{4}{section*.9}
