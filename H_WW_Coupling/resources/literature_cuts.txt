@@ -1,0 +1,62 @@
+LEP3:
+
+For sigmaHZ x H->bb at 240 GeV:
+	Transverse momentum of lepton pair larger than 10 GeV
+	Longitudinal momentum smaller than 50 GeV
+	Acoplanarity - angle between lepton pair plane and beam axis - larger than 10 degrees
+	
+	Radiative return to the Z mass?
+	
+	Acollinearity - angle between two leptons, larger than 100 degrees
+	
+	Each event with more than two jets is forced to form two jets
+	
+	All jets must have at least five reconstructed particles
+	At least one charged hadron
+
+
+Sample Generation Revision:
+	Signal - 	nunuH, h->bb to calculate perliminary cuts
+	Backgrounds - 	nunubb
+			nunucc
+			nunuqq
+			e+e- -> W+W- -> nul l+- qq
+			e+e- -> W+W- -> lnulnu
+			e+e- -> W+W- -> qqqq
+			e+e- -> ZZ -> l+l- qq
+			e+e- -> ZZ -> qqqq
+			e+e- -> W+-e+-nue -> nu e+- qq
+			e+e- -> Ze+e- -> qqe+e-
+			e+e- -> qq
+
+			bbnunu
+			qqnunuu
+			qqnul
+			qqll
+			qqqq
+				WW:
+					e+ e- > w+ w- > u d u~ d~
+						did not work with mass cut
+					e+ e- > w+ w- > u s c~ d~ 
+					e+ e- > w+ w- > u d~ b t~
+					e+ e- > w+ w- > c d u~ s~
+					e+ e- > w+ w- > c s c~ s~
+					e+ e- > w+ w- > c s~ b t~
+					e+ e- > w+ w- > d u~ t b~
+					e+ e- > w+ w- > s c~ t b~
+					e+ e- > w+ w- > b t b~ t~
+			qq
+			qqgamma
+
+
+			nunubb
+			nunucc
+			nunuqq
+			qqll
+			qqlnu
+			qq
+			qqa
+		
+
+			
+	

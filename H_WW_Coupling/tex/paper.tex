@@ -2,13 +2,13 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{subfigure}
 \usepackage{amsmath,amssymb}
-% \usepackage{feynmp}
+\usepackage{feynmp}
 \usepackage{url}
 \usepackage{ulem}
 \usepackage{multirow}
 \usepackage{hyperref,color}
+
 \renewcommand{\sfdefault}{phv}
 \renewcommand{\baselinestretch}{1.2}
 
@@ -16,24 +16,24 @@
 
 \input{declare}
 
-% \usepackage{booktabs,siunitx}
+\usepackage{booktabs,siunitx}
 \usepackage{multirow}
 \usepackage{tabularx}
 \usepackage{ragged2e}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
-% \AtBeginDocument{
-% % \heavyrulewidth=.08em
-% \lightrulewidth=.05em
-% \cmidrulewidth=.03em
-% \belowrulesep=.65ex
-% \belowbottomsep=0pt
-% \aboverulesep=.4ex
-% \abovetopsep=0pt
-% \cmidrulesep=\doublerulesep
-% \cmidrulekern=.5em
-% \defaultaddspace=.5em
-% }
+ \AtBeginDocument{
+ \heavyrulewidth=.08em
+ \lightrulewidth=.05em
+ \cmidrulewidth=.03em
+ \belowrulesep=.65ex
+ \belowbottomsep=0pt
+ \aboverulesep=.4ex
+ \abovetopsep=0pt
+ \cmidrulesep=\doublerulesep
+ \cmidrulekern=.5em
+ \defaultaddspace=.5em
+}
 
 %Paper formatting based on Higgs CP study by Andres Rios - commented sections from this paper
 
@@ -51,7 +51,7 @@ Circular Colider - Electron Positron}
 \affiliation{Massachusetts Institute of Technology, Cambrigde, USA}
 
 \begin{abstract}
-This investigation seeks to evaluate the potential performance capabilities of the measurment of Higgs to WW coupling at the FCCee - a future $e^+e^-$ collider. The signal process used in the investigation is $e^+e^-\rig\nu\bar{\nu} b\bar{b}$ through WW Fusion, and considers various backgrounds. Unlike previous studies, this investigation closely evaluates the effect of detector performance on the coupling uncertainty. The model-independent uncertainty on Higgs to WW coupling is found to be !!! using an optimized detector.
+This investigation seeks to evaluate the potential performance capabilities of the measurment of Higgs to WW coupling and the total Higgs decay width at the FCC-ee - a future $e^+e^-$ collider. The signal process used in the investigation is $e^+e^-\rig\nu\bar{\nu} b\bar{b}$ through WW Fusion, and considers various backgrounds. Unlike previous studies, this investigation closely evaluates the effect of detector performance on the coupling uncertainty. The uncertainty on the measurement of  $\sigma_{\nu\bar{\nu}H}$ x BR $(H \rig b\bar{b})$ is found to be 2.3\% at $\sqrt{s} = 350 \gev$ and 3.8\% at $\sqrt{s} = 240 \gev$, leading to a model-independent uncertainty on Higgs to WW coupling of 0.8\% and 1.1\% respectively, and an uncertainty on the total Higgs decay width of 1.1\% and 1.4\%, respectively.
 \end{abstract}
 
 \maketitle
@@ -69,27 +69,75 @@ This investigation seeks to evaluate the potential performance capabilities of t
 % What previous studies have been done
 % Conclusions
 
-The requirement on the precision of knowledge of Higgs Boson properties necessary to find new physics scales as $1/{\Lambda^2}$ \cite{TLEP}. For new physics at 1 TeV, per-cent sensitivity in Higgs couplings is ncecessary, while a per-mil sensitivity is necessary for multi-TeV new physics discoveries. 
+To continue the search for physics beyond the standard model, precision knowledge of standard-model particles and their properties is required to measure deviations at higher energy scales. In investigating the Higgs boson, evidence for new physics at an energy scale of 1 TeV is expressed in deviations of the Higgs boson coupling to gauge bosons and fermions of up to 5\% relative to Standard Model predictions, and scales as $1/{\Lambda^2}$ \cite{tlep}. It is therefore necessary to measure Higgs boson couplings to per-cent accuracy or better to be sensitive to new physics at 1 TeV, and to per-mil accuracy or better to be sensitive to new  physics at multi-TeV.
 
-An $e^+e^-$ collider gives a clean and high-precision higgs factory useful for studying various higgs properties \cite{TLEP}.
+Among the possible machines proposed for a precision study of the standard model particles, the FCC-ee (Future Circular Collider electron-positron) stands out as the tool of choice. A circular $e^+e^-$ collider provides a high-luminosity higgs factory with a clean detection environment useful for studying various higgs properties as well as Z and W bosons and the top-quark \cite{TLEP}.
 
-The total width of the Higgs, and thus different higgs couplings, can be determined model-independently by studing the processes $e^+e^-\rig Z H $ and $e^+e^-\rig\nu\bar{\nu} b\bar{b}$ through WW fusion.   
+Constraining the Higgs to W boson coupling ($g_\text{HWW}$) and the total Higgs boson width ($\Gamma_\text{tot}$) is a top priority. 
 
-Previous studies have been done investigating Higgs Decays at the ILC \cite{Higgs ILC}, at TLEP \cite{TLEP} and at LEP3 using the CMS detector \cite{lep3}.
+One path for this measurement is through studying the process $e^+e^-\rig\nu\bar{\nu} b\bar{b}$. This final state occurs through two processes, Higgs-strahlung (HZ) (Figure \ref{fig:hz_feyn}) where the Z decays into a neutrino pair, and WW fusion (Figure \ref{fig:ww_feyn}).\\
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}{.5\textwidth}
+		\centering
+				\begin{fmffile}{zh}
+					\begin{fmfgraph*}(100,40)
+						\fmfleft{i1,i2}
+						\fmfright{o1,o2}
+						\fmflabel{$e^+$}{i1}
+						\fmflabel{$e^-$}{i2}
+						\fmflabel{$H$}{o2}
+						\fmflabel{$Z$}{o1}
+						\fmf{fermion}{i2,v1,i1}
+						\fmf{dashes}{v2,o2}
+						\fmf{boson}{v2,o1}
+						\fmf{boson,label=$Z^*$}{v1,v2}
+					\end{fmfgraph*}
+				\end{fmffile}
+		\caption{Higgs-strahlung}
+		\label{fig:hz_feyn}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\centering
+				\begin{fmffile}{ww}
+					\begin{fmfgraph*}(200,40)
+						\fmfleft{i1,i2}
+						\fmfright{o1,o2,o3}
+						\fmflabel{$e^+$}{i1}
+						\fmflabel{$e^-$}{i2}
+						\fmflabel{$\nu_{l}$}{o3}
+						\fmflabel{$H$}{o2}
+						\fmflabel{$\bar{\nu_{l}}$}{o1}
+						\fmf{fermion}{i2,v1,o3}
+						\fmf{fermion}{o1,v2,i1}
+						\fmf{boson}{v1,v3,v2}
+						\fmf{dashes}{v3,o2}
+						\fmf{boson,label=$W^+$}{v1,v3}
+						\fmf{boson,label=$W^-$}{v2,v3}
+					\end{fmfgraph*}
+				\end{fmffile}
+		\caption{WW Fusion}
+		\label{fig:ww_feyn}
+	\end{minipage}
+\end{figure}
 
-This study concludes that by constructing a detector specifically for the FCCee to investigate Higgs couplings, the uncertainty on the coupling of Higgs to WW can be determined to !!! percent and the uncertainty on the total higgs width, can be model-independently found to be !!!.
+The measurement of $\sigma_{\nu\bar{\nu}H}$ x BR $(H \rig b\bar{b})$ contributes to the calculation of the total Higgs boson width, given by
+\begin{equation}
+	\Gamma_\text{tot} = \frac{\Gamma(\text{H}\rig\text{W W})}{\text{BR}(\text{H}\rig\text{W W})}
+\end{equation}
+
+The uncertainty of the measurement of $\sigma_{\nu\bar{\nu}H}$ x BR $(H \rig b\bar{b})$, determined by fittting the WW Fusion profile to a Monte Carlo (MC) simulation of the $\nu\bar{\nu}b\bar{b}$ signal and backgrounds, can therefore be combined with previously published uncertainty calculations on Higgs branching ratios to determine the potential precision of the Higgs boson total width measurement at the FCC-ee.
+
+Two center-of-mass energies are considered - $\sqrt{s} = 350 \gev$ and $\sqrt{s} = 240 \gev$. 240 GeV is the center-of-mass energy proposed for the FCC as a Higgs factory, which balances the Higgs production cross section with the FCC-ee luminosity profile as a function of energy. While the Higgs cross-section peaks at 255 Gev, the FCC-ee luminosity decreases with increasing energy due to bremsstrahlung, leading to a maximum luminosity at $\sqrt{s} = 240 \gev$. It is proposed to run the FCC-ee at $\sqrt{s} = 240 \gev$ for five years, leading to a total integrated luminosity of 10 ab$^-1$ with four interaction points. The FCC-ee proposal also includes a five-year run at the $t\bar{t}$ threshold of $\sqrt{s} = 350 \gev$ with an integrated luminosity of 2.6 ab$^-1$. For this investigation, while large luminosity is preferable and decreases statistical uncertainty, the shape separation between the WW Fusion profile and its most similar background, ZH, increases as the available phase space of the missing mass increases. While the missing mass of the ZH background clusters around the Z boson mass of 91 GeV, the missing mass of the WW Fusion signal peaks at around $\sqrt{s}$ - m$_{H}$. A larger difference between the shape of the WW Fusion signal and its backgrounds leads to a lower uncertainty in the signal fit to the simulated data, thereby decreasing the uncertainty of the measurements. 
+
+In the course of this study, the effects of detector performance on the precision of coupling measurements is investigated, and compared against detectors simulated in previous studies investigating Higgs decays at the ILC \cite{Higgs ILC}, at TLEP \cite{TLEP} and at LEP3 using the CMS detector \cite{lep3}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Objects}
 \label{sec:samples}
 % What is used to detect the higgs signal
 
-The signal process investigated is $e^+e^-\rig\nu\bar{\nu} b\bar{b}$ through WW fusion 
-
-% \includegraphics{WW Fusion Feynman Diagram}
-
-The visible decay products are two b-quarks, which hadronize into two jets which are the objects searched for by the detector. The mass of the b-quarks corresponds to the mass of the Higgs Boson
-
+The signal process investigated is $e^+e^-\rig\nu\bar{\nu} b\bar{b}$ through WW fusion. The visible decay products are two b-quarks, which hadronize into two jets of particles, and are the objects detected and reconstructed by the detector. Neutrinos escape the detector and are searched for through the profile of the missing four-momentum calculated from the two reconstructed jets.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -130,6 +178,8 @@ The total higgs width was calculated to be !!! and the higgs WW coupling is calc
 \label{sec:results}
 % discuss the results
 % (compare results with previous studies
+
+The uncertainty on the measurement of  $\sigma_{\nu\bar{\nu}H}$ x Br $(H \rig b\bar{b})$ is found to be 2.3\% at $\sqrt{s} = 350 \gev$ and 3.8\% at $\sqrt{s} = 240 \gev$, (compare to 0.6\% and 2.2\% in the TLEP paper) leading to a model-independent uncertainty on Higgs to WW coupling of 0.8\% and 1.1\%! respectively, and an uncertainty on the total higgs width of 1.1\% and 1.4\%, respectively (compare to 1.2\% and 2.4\% in the TLEP paper).
 
 The results found in this analysis suggests an improvement in the potential precision of Higgs to WW coupling measurements using an FCCee - specific detector, and improves the physics case for a circular electron positron precision higgs factory. 
 
