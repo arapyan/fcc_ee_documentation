@@ -139,6 +139,11 @@ In the course of this study, the effects of detector performance on the precisio
 
 The signal process investigated is $e^+e^-\rig\nu\bar{\nu} b\bar{b}$ through WW fusion. The visible decay products are two b-quarks, which hadronize into two jets of particles, and are the objects detected and reconstructed by the detector. Neutrinos escape the detector and are searched for through the profile of the missing four-momentum calculated from the two reconstructed jets.
 
+Jet reconstruction was first performed using the antikt algorithm included with the default Delphes distribution (\url{https://arxiv.org/pdf/0802.1189.pdf}). This algorithm defines a jet by the cluster of particles around a point with some cutoff distance. This is not optimized for the FCC, however, since our signal will contain only particles which come from one of the two jets and nothing else. Thus, it is better to define the two jets as a grouping of all the particles seen by the detector into exactly two jets. This is accomplished by the inclusive ee-kt algorithm which is included in Fastjet (\url{https://arxiv.org/pdf/1111.6097.pdf}). To do this, the Delphes installation was modified to interface a broader selection of algorithms. The modified code can be found in (\url{https://github.com/aandriat/MIT-FCCee/tree/master/jet_algs}) with FastJetFinder.cc being the crucial element, located in the Delphes/modules directory of your Delphes installation.
+
+ 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{MC Event generation and detector simulation}
@@ -147,7 +152,9 @@ The signal process investigated is $e^+e^-\rig\nu\bar{\nu} b\bar{b}$ through WW 
 
 The generation of signal and background events was performed through Whizard \cite{whizard} which is a next-to-leading order tool and includes initial state radiation. Parton showering and hadronization was done using Pythia 8 \cite{pythia}. Detector simulation was done using Delphes \cite{delphes}. A card was made to simulate an optimal detector for Higgs precision studies at the FCCee. 
 
-The signal event produced is $\nu\bar{\nu}b\bar{b}$ through WW Fusion. The background events considered are $\nu\bar{\nu}b\bar{b}$ through ZH, $\nu\bar{\nu}c\bar{c}$, $\nu\bar{\nu}q\bar{q} (q\neq b,c)$, $q\bar{q}l^+l^-$, $q\bar{q}l^-\nu$, $q\bar{q}q\bar{q}$, $q\bar{q}$, and $q\bar{q}\gamma$.  
+The signal event produced is $\nu\bar{\nu}b\bar{b}$ through WW Fusion. The background events considered are $\nu\bar{\nu}b\bar{b}$ through ZH, $\nu\bar{\nu}c\bar{c}$, $\nu\bar{\nu}q\bar{q} (q\neq b,c)$, $q\bar{q}l^+l^-$, $q\bar{q}l^-\nu$, $q\bar{q}q\bar{q}$, $q\bar{q}$, and $q\bar{q}\gamma$. 
+
+Update: To more inclusively account for possible background processes, the background collection was changed to $e^+e^-\rig q\bar{q}$, $e^+e^-\rig W^{+}W{-}$, and $e^+e^-\rig ZZ$. However, I had trouble implementing this in Whizard becasue of on-shell constraints and double-counting if considering the final states of these processes. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Candidate selection}
@@ -155,9 +162,9 @@ The signal event produced is $\nu\bar{\nu}b\bar{b}$ through WW Fusion. The backg
 % what is the event selection 
 % explain how this was optimized
 
-To select the WW Fusion $\nu\bar{nu}b\bar{b}$ signal, first a sample is created which looks for two jets reconstruccted using the anti-$k_T$ algorithn wth a distance parameter of 1.5. The jets are b-tagged with an efficiency specified by !!!. Only events containing two jets which are both b-tagged are allowed. Events with isolated leptons are omitted. 
+To select the WW Fusion $\nu\bar{nu}b\bar{b}$ signal, first a sample is created which groups all detected particles into exactly two jets reconstruccted using the ee-$k_T$ algorithm. The jets are b-tagged with an efficiency specified by the Delphes deterctor simulation. Only events containing two jets which are both b-tagged are allowed. Events with isolated leptons are omitted. 
 
-Next, kinematic cuts are applied based on the distribution of various properties. The visible mass of the system is required to be between 110 and 140 GeV since the visible mass from the signal comes only from the Higgs. The visible PT of the system is required to be greater than 15 GeV. The visible PZ is required to be less than 90 GeV. The number of charged tracks in the two jets is required to be between 10 and 30. The acoplanarity angle greater than 0.1, lab angle between 1.5 and 3, and CosTheta of the leading jet less than 0.95 further eliminates backgrounds. The visible energy of the system and recoil mass of the di-jet system are not considered because the uncertainty in the cross section and branching ratio of the Higgs bb system is given by the shape fit of the recoil mass, since at 350 GeV the missing mass has a large separation between the ZH and WW Fusion processes. 
+Next, kinematic cuts are applied based on the distribution of various properties. The optimal cuts were determined both by visual inspection of N-1 cut distributions, and through a BDT rectangular cut optimization tool in TMVVA. The visible mass of the system is required to be between 99 and 140 GeV since the visible mass from the signal comes only from the Higgs. The visible PT of the system is required to be less than 140 GeV. The visible PZ is required to be less than 130 GeV. The number of charged tracks in the two jets is required to be between 6 and 40. Lab angle between 1.5 and 3. Other parameters considered were the acoplanarity angle, and the CosTheta of the jet with respect to the beam axis, but were found to have negligible impact on the elimination of backgrounds. The visible energy of the system and recoil mass of the di-jet system are not considered for cuts because the uncertainty in the cross section and branching ratio of the Higgs bb system is given by the shape fit of the recoil mass, so the full distribution is left for the signal extraction. The implementation of cuts in the analysis code can be found in (\url{https://github.com/aandriat/MIT-FCCee/blob/master/vvbb_complete/install/treecutter_tree.C#L90}). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Statistical method}
@@ -167,7 +174,7 @@ Next, kinematic cuts are applied based on the distribution of various properties
 
 The uncertainty in the quanitity of interest, $\sigma_{\nu\bar{\nu}H}$ x Br $(H \rig b\bar{b})$ is found using a Maximum Likelihood tool from HiggsAnalysis/CombinedLimit \cite{higgsanalysis}. This measurement is then combined with other measurements necessary to arrive at a total higgs width in a coupling tool \cite{couplingtool}.
 
-The Maximum Likelihood tool allows the specification of systematic uncertainties. The unertainties used are a lognormal systematic uncertainty of 2.6\% on luminosity and an individual lognormal uncertainty of 1\% on each of the backgrounds and signal.
+The Maximum Likelihood tool allows the specification of systematic uncertainties. The unertainties used are a lognormal systematic uncertainty of 2.6\% on luminosity and an individual lognormal uncertainty of 1\% on each of the backgrounds and signal. As an additional feature, the ZH process can be considered as a second signal and is left with a floating normalization uncertainty, so that assumptions about the shape of the ZH distribution do not contribute to the measurement of the WW uncertainty. The setup for this measurement is shown in (\url{https://github.com/aandriat/MIT-FCCee/blob/master/vvbb_complete/install/xsection_tool.txt}).
 
 The analysis gives a total uncertainty of 2.29\% in $\sigma_{\nu\bar{\nu}H} x Br(H \rig b\bar{b})$. Compare this to an uncertainty of 10.5\% at 240 GeV and 0.66\% at 500 GeV given by the ILD paper \cite{ILD}.
 
